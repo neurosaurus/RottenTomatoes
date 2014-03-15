@@ -10,6 +10,8 @@
 
 @interface MoviesIndexViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *moviesIndex;
+
 @end
 
 @implementation MoviesIndexViewController
@@ -26,7 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    //self.tableView.dataSource = self;
+    //self.tableView.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +40,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view methods
+
+- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"This is row %d", indexPath.row];
+    
+    return cell;
+}
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Tripta Gupta. All rights reserved.
 //
 
-#import "TGAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation TGAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
