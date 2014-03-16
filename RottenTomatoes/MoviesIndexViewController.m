@@ -9,6 +9,7 @@
 #import "MoviesCell.h"
 #import "MoviesRequest.h"
 #import "MoviesIndexViewController.h"
+#import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface MoviesIndexViewController ()

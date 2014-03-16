@@ -10,4 +10,8 @@
 
 @implementation Movie
 
+//- (id)initWithDictionary:(NSDictionary*)dictionary;
+//{
+    //self.title = [dictionary]
+//}
 @end

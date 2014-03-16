@@ -7,6 +7,9 @@
 //
 
 #import "MoviesCell.h"
+#import "AFNetworking.h"
+#import "Cast.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation MoviesCell
 

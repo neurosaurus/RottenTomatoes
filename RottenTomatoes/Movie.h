@@ -15,6 +15,6 @@
 @property (nonatomic) NSURL *thumbNail;
 @property (nonatomic) NSURL *poster;
 
-- (Movie *)initWithDictionary:(NSDictionary*)dict;
+- (id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end
