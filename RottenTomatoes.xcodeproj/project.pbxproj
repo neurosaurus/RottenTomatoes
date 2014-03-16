@@ -25,6 +25,7 @@
 		EBCF2F3F18D18638007FDF7F /* RottenTomatoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCF2F3E18D18638007FDF7F /* RottenTomatoesTests.m */; };
 		EBCF2F4B18D1865F007FDF7F /* MoviesIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCF2F4918D1865F007FDF7F /* MoviesIndexViewController.m */; };
 		EBCF2F4C18D1865F007FDF7F /* MoviesIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCF2F4A18D1865F007FDF7F /* MoviesIndexViewController.xib */; };
+		EBE101DF18D537F900CB7089 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE101DE18D537F900CB7089 /* Movie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		EBCF2F4818D1865F007FDF7F /* MoviesIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesIndexViewController.h; sourceTree = "<group>"; };
 		EBCF2F4918D1865F007FDF7F /* MoviesIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesIndexViewController.m; sourceTree = "<group>"; };
 		EBCF2F4A18D1865F007FDF7F /* MoviesIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesIndexViewController.xib; sourceTree = "<group>"; };
+		EBE101DD18D537F900CB7089 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		EBE101DE18D537F900CB7089 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 			children = (
 				EB31623D18D523FE004B970A /* MoviesRequest.h */,
 				EB31623E18D523FE004B970A /* MoviesRequest.m */,
+				EBE101DD18D537F900CB7089 /* Movie.h */,
+				EBE101DE18D537F900CB7089 /* Movie.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE101DF18D537F900CB7089 /* Movie.m in Sources */,
 				EBCF2F2618D18638007FDF7F /* main.m in Sources */,
 				EBCF2F4B18D1865F007FDF7F /* MoviesIndexViewController.m in Sources */,
 				EB1DF6F818D51DDA0032F4FC /* MoviesCell.m in Sources */,

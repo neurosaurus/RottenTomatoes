@@ -7,11 +7,14 @@
 //
 
 #import "MoviesCell.h"
+#import "MoviesRequest.h"
 #import "MoviesIndexViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MoviesIndexViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *moviesIndex;
+@property (nonatomic, weak) IBOutlet UITableView *moviesIndex;
+@property (nonatomic, strong) NSArray *movies;
 
 @end
 
@@ -30,6 +33,13 @@
 {
     [super viewDidLoad];
     
+    self.moviesIndex.delegate = self;
+    self.moviesIndex.dataSource = self;
+    
+    UINib *movieNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
+    [self.moviesIndex registerNib:movieNib forCellReuseIdentifier:@"MoviesCell"];
+    
+    //[self getMovies];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,12 +50,12 @@
 
 #pragma mark - Table view methods
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (int)moviesIndex:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.movies.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)moviesIndex:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     
@@ -53,4 +63,11 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+
 @end

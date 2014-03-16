@@ -1,5 +1,5 @@
 //
-//  MoviesRequest.h
+//  Movie.h
 //  RottenTomatoes
 //
 //  Created by Tripta Gupta on 3/15/14.
@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MoviesRequest : NSObject
-
-- (void)getMovies;
+@interface Movie : NSObject
 
 @end
