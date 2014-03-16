@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Tripta Gupta. All rights reserved.
 //
 
+#import "MoviesCell.h"
 #import "MoviesIndexViewController.h"
 
 @interface MoviesIndexViewController ()
@@ -28,9 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //self.tableView.dataSource = self;
-    //self.tableView.delegate = self;
     
 }
 
