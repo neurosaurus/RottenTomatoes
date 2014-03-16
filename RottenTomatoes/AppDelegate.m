@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MoviesIndexViewController.h"
+#import "MoviesDetailViewController.h"
 
 @implementation AppDelegate
 

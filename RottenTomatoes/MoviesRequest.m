@@ -7,8 +7,7 @@
 //
 
 #import "MoviesRequest.h"
-#import "MoviesIndexViewController.h"
-//#import "Movie.h" ??
+#import "Movie.h"
 #import "AFNetworking.h"
 
 @implementation MoviesRequest

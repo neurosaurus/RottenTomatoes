@@ -7,10 +7,10 @@
 //
 
 #import "MoviesCell.h"
-#import "MoviesRequest.h"
 #import "MoviesIndexViewController.h"
-#import "AFNetworking.h"
+#import "MoviesDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "MBProgressHUD.h"
 
 @interface MoviesIndexViewController ()
 
@@ -39,8 +39,9 @@
     
     UINib *movieNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
     [self.moviesIndex registerNib:movieNib forCellReuseIdentifier:@"MoviesCell"];
-    
-    [self getMovies];
+//    MoviesRequest *request = [[MoviesRequest alloc] init];
+//    
+//    [request getMovies];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,11 +57,9 @@
     return self.movies.count;
 }
 
-- (UITableViewCell *)moviesIndex:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)cell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"This is row %d", indexPath.row];
+    MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
     
     return cell;
 }
@@ -69,6 +68,5 @@
 {
     
 }
-
 
 @end

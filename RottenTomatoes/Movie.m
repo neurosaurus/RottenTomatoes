@@ -7,11 +7,21 @@
 //
 
 #import "Movie.h"
+#import "Cast.h"
 
 @implementation Movie
 
-//- (id)initWithDictionary:(NSDictionary*)dictionary;
-//{
-    //self.title = [dictionary]
-//}
+- (id)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    if (self) {
+        self.title = dictionary[@"title"];
+        self.thumbNail = dictionary[@"posters"][@"thumbnail"];
+        self.poster = dictionary[@"posters"][@"profile"];
+        self.cast = dictionary[@"cast"];
+        self.synopsis = dictionary[@"synopsis"];
+    }
+    return self;
+}
+
 @end
