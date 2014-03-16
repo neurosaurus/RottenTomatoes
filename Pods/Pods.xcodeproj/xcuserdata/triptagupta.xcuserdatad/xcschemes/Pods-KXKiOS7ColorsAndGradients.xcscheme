@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26650A3B063B44AD8C6880DD"
+               BlueprintIdentifier = "9EE04AA5C8C744819F2237E8"
                BuildableName = "libPods-KXKiOS7ColorsAndGradients.a"
                BlueprintName = "Pods-KXKiOS7ColorsAndGradients"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -52,21 +52,29 @@
 
 #pragma mark - Table view methods
 
-- (int)moviesIndex:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.movies.count;
+    return 10;
 }
 
-- (UITableViewCell *)cell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
     
-    return cell;
-}
+    cell.textLabel.text = [NSString stringWithFormat:@"Hello World"];
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+    return cell;
     
 }
+
+
+
+//- (UITableViewCell *)cell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
+//    
+//    return cell;
+//}
 
 @end
