@@ -28,6 +28,7 @@
 		EBE101DF18D537F900CB7089 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE101DE18D537F900CB7089 /* Movie.m */; };
 		EBE101E318D539EC00CB7089 /* MoviesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE101E118D539EC00CB7089 /* MoviesDetailViewController.m */; };
 		EBE101E418D539EC00CB7089 /* MoviesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBE101E218D539EC00CB7089 /* MoviesDetailViewController.xib */; };
+		EBE101E718D542C900CB7089 /* CastMember.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE101E618D542C900CB7089 /* CastMember.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		EBE101E018D539EC00CB7089 /* MoviesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesDetailViewController.h; sourceTree = "<group>"; };
 		EBE101E118D539EC00CB7089 /* MoviesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesDetailViewController.m; sourceTree = "<group>"; };
 		EBE101E218D539EC00CB7089 /* MoviesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesDetailViewController.xib; sourceTree = "<group>"; };
+		EBE101E518D542C900CB7089 /* CastMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastMember.h; sourceTree = "<group>"; };
+		EBE101E618D542C900CB7089 /* CastMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastMember.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				EB31623E18D523FE004B970A /* MoviesRequest.m */,
 				EBE101DD18D537F900CB7089 /* Movie.h */,
 				EBE101DE18D537F900CB7089 /* Movie.m */,
+				EBE101E518D542C900CB7089 /* CastMember.h */,
+				EBE101E618D542C900CB7089 /* CastMember.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 			files = (
 				EBE101DF18D537F900CB7089 /* Movie.m in Sources */,
 				EBE101E318D539EC00CB7089 /* MoviesDetailViewController.m in Sources */,
+				EBE101E718D542C900CB7089 /* CastMember.m in Sources */,
 				EBCF2F2618D18638007FDF7F /* main.m in Sources */,
 				EBCF2F4B18D1865F007FDF7F /* MoviesIndexViewController.m in Sources */,
 				EB1DF6F818D51DDA0032F4FC /* MoviesCell.m in Sources */,
