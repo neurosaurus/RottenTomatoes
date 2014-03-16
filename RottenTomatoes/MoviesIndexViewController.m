@@ -39,7 +39,7 @@
     UINib *movieNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
     [self.moviesIndex registerNib:movieNib forCellReuseIdentifier:@"MoviesCell"];
     
-    //[self getMovies];
+    [self getMovies];
 }
 
 - (void)didReceiveMemoryWarning

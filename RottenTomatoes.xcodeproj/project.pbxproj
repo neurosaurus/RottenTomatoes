@@ -26,6 +26,8 @@
 		EBCF2F4B18D1865F007FDF7F /* MoviesIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCF2F4918D1865F007FDF7F /* MoviesIndexViewController.m */; };
 		EBCF2F4C18D1865F007FDF7F /* MoviesIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCF2F4A18D1865F007FDF7F /* MoviesIndexViewController.xib */; };
 		EBE101DF18D537F900CB7089 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE101DE18D537F900CB7089 /* Movie.m */; };
+		EBE101E318D539EC00CB7089 /* MoviesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE101E118D539EC00CB7089 /* MoviesDetailViewController.m */; };
+		EBE101E418D539EC00CB7089 /* MoviesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBE101E218D539EC00CB7089 /* MoviesDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,9 @@
 		EBCF2F4A18D1865F007FDF7F /* MoviesIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesIndexViewController.xib; sourceTree = "<group>"; };
 		EBE101DD18D537F900CB7089 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		EBE101DE18D537F900CB7089 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		EBE101E018D539EC00CB7089 /* MoviesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesDetailViewController.h; sourceTree = "<group>"; };
+		EBE101E118D539EC00CB7089 /* MoviesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesDetailViewController.m; sourceTree = "<group>"; };
+		EBE101E218D539EC00CB7089 /* MoviesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +126,9 @@
 				EBCF2F4818D1865F007FDF7F /* MoviesIndexViewController.h */,
 				EBCF2F4918D1865F007FDF7F /* MoviesIndexViewController.m */,
 				EBCF2F4A18D1865F007FDF7F /* MoviesIndexViewController.xib */,
+				EBE101E018D539EC00CB7089 /* MoviesDetailViewController.h */,
+				EBE101E118D539EC00CB7089 /* MoviesDetailViewController.m */,
+				EBE101E218D539EC00CB7089 /* MoviesDetailViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 				EBCF2F2418D18638007FDF7F /* InfoPlist.strings in Resources */,
 				EBCF2F4C18D1865F007FDF7F /* MoviesIndexViewController.xib in Resources */,
 				EB1DF6F918D51DDA0032F4FC /* MoviesCell.xib in Resources */,
+				EBE101E418D539EC00CB7089 /* MoviesDetailViewController.xib in Resources */,
 				EBCF2F2C18D18638007FDF7F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBE101DF18D537F900CB7089 /* Movie.m in Sources */,
+				EBE101E318D539EC00CB7089 /* MoviesDetailViewController.m in Sources */,
 				EBCF2F2618D18638007FDF7F /* main.m in Sources */,
 				EBCF2F4B18D1865F007FDF7F /* MoviesIndexViewController.m in Sources */,
 				EB1DF6F818D51DDA0032F4FC /* MoviesCell.m in Sources */,
