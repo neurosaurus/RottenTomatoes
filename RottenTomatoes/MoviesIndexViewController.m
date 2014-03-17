@@ -28,15 +28,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Movies";
-        
-        NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            self.movies = [Movie moviesWithArray:object[@"movies"]];
-            [self.tableView reloadData];
-        }];
     }
     return self;
 }
@@ -45,11 +36,31 @@
 {
     [super viewDidLoad];
     
+    //refresh
+//    UIRefreshControl *refreshC = [[UIRefreshControl alloc] init];
+//    [refreshC addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+//    [self.tableView addSubview:refreshC];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    UINib *moviesCellNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
-    [self.tableView registerNib:moviesCellNib forCellReuseIdentifier:@"MoviesCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MoviesCell" bundle:nil] forCellReuseIdentifier:@"MoviesCell"];
+    
+    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        //id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        self.movies = [Movie moviesWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        [self.tableView reloadData];
+    }];
+    
+    //TODO: load indicator
 }
+
+//- (void)grabContent:(UIRefreshControl *)refreshControl
+//{
+//    
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -67,7 +78,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
-    
     cell.movie = self.movies[indexPath.row];
     return cell;
 }
@@ -77,6 +87,8 @@
 {
     MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] initWithNibName:@"MovieDetailViewController" bundle:nil];
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 

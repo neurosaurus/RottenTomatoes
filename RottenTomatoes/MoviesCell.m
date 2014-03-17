@@ -40,10 +40,11 @@
 {
     _movie = movie;
     
-    self.movieTitle.text = _movie.title;
-    self.synopsis.text = _movie.synopsis;
+    self.movieTitle.text = self.movie.title;
+    self.synopsis.text = self.movie.synopsis;
+    NSURL *url = [[NSURL alloc] initWithString:self.movie.posterUrl] ;
+    [self.posterView setImageWithURL:url];
     
-    [self.posterView setImageWithURL:[NSURL URLWithString:_movie.posterURL]];
 }
 
 @end
