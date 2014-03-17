@@ -11,6 +11,9 @@
 #import "MBProgressHUD.h"
 
 @interface MoviesDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *fullImage;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *castLabel;
 
 @end
 
