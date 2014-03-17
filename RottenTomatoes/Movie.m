@@ -15,10 +15,10 @@
     self = [super init];
     if (self) {
         self.title = [dictionary objectForKey:@"title"];
+        self.synopsis = [dictionary objectForKey:@"synopsis"];
         self.thumbNail = [dictionary objectForKey:@"thumbnail"];
         self.posterUrl = [dictionary objectForKey:@"posters"];
         self.cast = [dictionary objectForKey:@"cast"];
-        self.synopsis = [dictionary objectForKey:@"synopsis"];
     }
     return self;
 }

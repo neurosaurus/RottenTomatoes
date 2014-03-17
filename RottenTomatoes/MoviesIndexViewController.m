@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
+//@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -75,8 +76,8 @@
     return self.movies.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
     cell.movie = self.movies[indexPath.row];
     return cell;
@@ -90,6 +91,5 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
-
 
 @end
