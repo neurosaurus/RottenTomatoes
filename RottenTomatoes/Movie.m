@@ -14,11 +14,11 @@
 {
     self = [super init];
     if (self) {
-        self.title = dictionary[@"title"];
-        self.thumbNail = dictionary[@"thumbnail"];
-        self.poster = dictionary[@"posters"];
-        self.cast = dictionary[@"cast"];
-        self.synopsis = dictionary[@"synopsis"];
+        self.title = [dictionary objectForKey:@"title"];
+        self.thumbNail = [dictionary objectForKey:@"thumbnail"];
+        self.poster = [dictionary objectForKey:@"posters"];
+        self.cast = [dictionary objectForKey:@"cast"];
+        self.synopsis = [dictionary objectForKey:@"synopsis"];
     }
     return self;
 }
