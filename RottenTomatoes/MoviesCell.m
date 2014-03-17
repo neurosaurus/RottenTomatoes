@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Tripta Gupta. All rights reserved.
 //
 
+#import "Movie.h"
 #import "MoviesCell.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"

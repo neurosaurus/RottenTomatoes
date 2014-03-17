@@ -57,7 +57,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view methods
+#pragma mark - Table view methods -- datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -71,5 +71,13 @@
     cell.movie = self.movies[indexPath.row];
     return cell;
 }
+
+#pragma mark - Table view methods -- delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] initWithNibName:@"MovieDetailViewController" bundle:nil];
+        [self.navigationController pushViewController:movieDetailViewController animated:YES];
+}
+
 
 @end
