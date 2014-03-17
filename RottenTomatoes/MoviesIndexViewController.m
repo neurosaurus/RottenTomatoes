@@ -7,6 +7,7 @@
 //
 
 #import "MoviesCell.h"
+#import "Movie.h"
 #import "MoviesIndexViewController.h"
 #import "MoviesDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
@@ -14,7 +15,8 @@
 
 @interface MoviesIndexViewController ()
 
-@property (nonatomic, weak) IBOutlet UITableView *moviesIndex;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 
 @end
@@ -25,7 +27,17 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.title = @"Movies";
+        
+        NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            //self.movies = [Movie moviesWithArray:object[@"movies"]];
+            
+            [self.tableView reloadData];
+        }];
     }
     return self;
 }
@@ -34,14 +46,10 @@
 {
     [super viewDidLoad];
     
-    self.moviesIndex.delegate = self;
-    self.moviesIndex.dataSource = self;
-    
-    UINib *movieNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
-    [self.moviesIndex registerNib:movieNib forCellReuseIdentifier:@"MoviesCell"];
-//    MoviesRequest *request = [[MoviesRequest alloc] init];
-//    
-//    [request getMovies];
+    self.tableView.rowHeight = 150;
+    self.tableView.dataSource = self;
+    UINib *moviesCellNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
+    [self.tableView registerNib:moviesCellNib forCellReuseIdentifier:@"MoviesCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,27 +62,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.movies.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Hello World"];
+    cell.movie = self.movies[indexPath.row];
 
     return cell;
-    
 }
-
-
-
-//- (UITableViewCell *)cell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
-//    
-//    return cell;
-//}
 
 @end

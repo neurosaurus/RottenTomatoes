@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MoviesRequest.h"
 #import "MoviesIndexViewController.h"
 #import "MBProgressHUD.h"
 

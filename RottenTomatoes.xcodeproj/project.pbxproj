@@ -10,7 +10,6 @@
 		C2AB384D920E4F51ACD79CDE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8BB0E8CADB48F282527E19 /* libPods.a */; };
 		EB1DF6F818D51DDA0032F4FC /* MoviesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1DF6F618D51DDA0032F4FC /* MoviesCell.m */; };
 		EB1DF6F918D51DDA0032F4FC /* MoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1DF6F718D51DDA0032F4FC /* MoviesCell.xib */; };
-		EB31623F18D523FE004B970A /* MoviesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EB31623E18D523FE004B970A /* MoviesRequest.m */; };
 		EBCF2F1A18D18638007FDF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCF2F1918D18638007FDF7F /* Foundation.framework */; };
 		EBCF2F1C18D18638007FDF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCF2F1B18D18638007FDF7F /* CoreGraphics.framework */; };
 		EBCF2F1E18D18638007FDF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCF2F1D18D18638007FDF7F /* UIKit.framework */; };
@@ -47,8 +46,6 @@
 		EB1DF6F518D51DDA0032F4FC /* MoviesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesCell.h; sourceTree = "<group>"; };
 		EB1DF6F618D51DDA0032F4FC /* MoviesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesCell.m; sourceTree = "<group>"; };
 		EB1DF6F718D51DDA0032F4FC /* MoviesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesCell.xib; sourceTree = "<group>"; };
-		EB31623D18D523FE004B970A /* MoviesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesRequest.h; sourceTree = "<group>"; };
-		EB31623E18D523FE004B970A /* MoviesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesRequest.m; sourceTree = "<group>"; };
 		EBCF2F1618D18638007FDF7F /* RottenTomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenTomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBCF2F1918D18638007FDF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EBCF2F1B18D18638007FDF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,8 +102,6 @@
 		EB1DF6F218D2DB5F0032F4FC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EB31623D18D523FE004B970A /* MoviesRequest.h */,
-				EB31623E18D523FE004B970A /* MoviesRequest.m */,
 				EBE101DD18D537F900CB7089 /* Movie.h */,
 				EBE101DE18D537F900CB7089 /* Movie.m */,
 				EBE101E518D542C900CB7089 /* Cast.h */,
@@ -354,7 +349,6 @@
 				EBCF2F4B18D1865F007FDF7F /* MoviesIndexViewController.m in Sources */,
 				EB1DF6F818D51DDA0032F4FC /* MoviesCell.m in Sources */,
 				EBCF2F2A18D18638007FDF7F /* AppDelegate.m in Sources */,
-				EB31623F18D523FE004B970A /* MoviesRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

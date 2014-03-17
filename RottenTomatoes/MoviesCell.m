@@ -11,15 +11,20 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 
+@interface MoviesCell ()
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *posterView;
+@property (weak, nonatomic) IBOutlet UILabel *movieTitle;
+@property (weak, nonatomic) IBOutlet UILabel *synopsis;
+
+@end
+
 @implementation MoviesCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void)awakeFromNib
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    //Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -27,6 +32,18 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+#pragma mark - Public methods
+
+- (void)setMovie:(Movie *)movie
+{
+    _movie = movie;
+    
+    self.movieTitle.text = movie.title;
+    self.synopsis.text = movie.synopsis;
+    
+    [self.posterView setImageWithURL:[NSURL URLWithString:movie.poster]];
 }
 
 @end

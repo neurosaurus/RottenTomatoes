@@ -24,7 +24,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description of Movie" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="339" translatesAutoresizingMaskIntoConstraints="NO" id="HjZ-ac-TJO">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description of Movie Description of MovieDescription of MovieDescription of MovieDescription of Movie" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="339" translatesAutoresizingMaskIntoConstraints="NO" id="HjZ-ac-TJO">
                         <rect key="frame" x="137" y="33" width="339" height="58"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -34,8 +34,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="movieDescription" destination="HjZ-ac-TJO" id="lBe-GU-OcP"/>
-                <outlet property="movieTitle" destination="jqJ-0S-pPr" id="UIg-G5-bSz"/>
-                <outlet property="thumbNail" destination="1eS-28-u04" id="wgQ-EZ-IO5"/>
+                <outlet property="movieTitle" destination="jqJ-0S-pPr" id="nRx-b8-jb0"/>
+                <outlet property="posterView" destination="1eS-28-u04" id="t3t-0C-RUB"/>
+                <outlet property="synopsis" destination="HjZ-ac-TJO" id="lNP-BT-T14"/>
+                <outlet property="thumbNail" destination="1eS-28-u04" id="ofP-Qr-Z0j"/>
             </connections>
         </tableViewCell>
         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YRg-5x-meo">
