@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSString *cast;
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
++ (NSArray *)moviesWithArray:(id)object;
 
 @end

@@ -34,8 +34,7 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            //self.movies = [Movie moviesWithArray:object[@"movies"]];
-            
+            self.movies = [Movie moviesWithArray:object[@"movies"]];
             [self.tableView reloadData];
         }];
     }
@@ -70,7 +69,6 @@
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
     
     cell.movie = self.movies[indexPath.row];
-
     return cell;
 }
 

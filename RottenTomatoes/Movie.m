@@ -24,4 +24,15 @@
     return self;
 }
 
++ (NSArray *)moviesWithArray:(id)object
+{
+    NSMutableArray *movies = [[NSMutableArray alloc] init];
+    for(NSDictionary *dictionary in object[@"movies" ])
+    {
+        Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+        [movies addObject:movie];
+    }
+    return [movies copy];
+}
+
 @end
