@@ -7,7 +7,6 @@
 //
 
 #import "Movie.h"
-#import "Cast.h"
 
 @implementation Movie
 
@@ -16,8 +15,8 @@
     self = [super init];
     if (self) {
         self.title = dictionary[@"title"];
-        self.thumbNail = dictionary[@"posters"][@"thumbnail"];
-        self.poster = dictionary[@"posters"][@"profile"];
+        self.thumbNail = dictionary[@"thumbnail"];
+        self.poster = dictionary[@"posters"];
         self.cast = dictionary[@"cast"];
         self.synopsis = dictionary[@"synopsis"];
     }
@@ -27,7 +26,7 @@
 + (NSArray *)moviesWithArray:(id)object
 {
     NSMutableArray *movies = [[NSMutableArray alloc] init];
-    for(NSDictionary *dictionary in object[@"movies" ])
+    for(NSDictionary *dictionary in object[@"movies"])
     {
         Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
         [movies addObject:movie];

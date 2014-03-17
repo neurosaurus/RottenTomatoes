@@ -47,6 +47,7 @@
     
     self.tableView.rowHeight = 150;
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     UINib *moviesCellNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
     [self.tableView registerNib:moviesCellNib forCellReuseIdentifier:@"MoviesCell"];
 }
