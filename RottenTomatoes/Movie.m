@@ -26,7 +26,7 @@
 + (NSArray *)moviesWithArray:(id)object
 {
     NSMutableArray *movies = [[NSMutableArray alloc] init];
-    for(NSDictionary *dictionary in object[@"movies"])
+    for(NSDictionary *dictionary in movies)
     {
         Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
         [movies addObject:movie];
