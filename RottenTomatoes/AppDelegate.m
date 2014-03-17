@@ -15,15 +15,26 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
     MoviesIndexViewController *mvc = [[MoviesIndexViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mvc];
+    
+//    BoxOfficeMoviesController *boxOfficeController = [[BoxOfficeMoviesController alloc] init];
+//    UINavigationController *navB = [[UINavigationController alloc] initWithRootViewController:boxOfficeController];
+
+//    TopDvdRentalsController *topDvdController = [[TopDvdRentalsController alloc] init];
+//    UINavigationController *topD = [[UINavigationController alloc] initWithRootViewController:topDvdController];
+
+//    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+//    tabBarController.viewControllers = @[topDvdController, boxOfficeController];
+//    self.window.rootViewController = tabBarController;
+    
     self.window.rootViewController = nc;
     
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

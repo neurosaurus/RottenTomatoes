@@ -76,7 +76,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] initWithNibName:@"MovieDetailViewController" bundle:nil];
-        [self.navigationController pushViewController:movieDetailViewController animated:YES];
+    [self.navigationController pushViewController:movieDetailViewController animated:YES];
 }
 
 

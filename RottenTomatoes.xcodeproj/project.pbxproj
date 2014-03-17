@@ -10,6 +10,8 @@
 		C2AB384D920E4F51ACD79CDE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8BB0E8CADB48F282527E19 /* libPods.a */; };
 		EB1DF6F818D51DDA0032F4FC /* MoviesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1DF6F618D51DDA0032F4FC /* MoviesCell.m */; };
 		EB1DF6F918D51DDA0032F4FC /* MoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1DF6F718D51DDA0032F4FC /* MoviesCell.xib */; };
+		EB8692D418D6AE74001D2B5A /* BoxOfficeMoviesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8692D318D6AE74001D2B5A /* BoxOfficeMoviesController.m */; };
+		EB8692D718D6AEFE001D2B5A /* TopDvdRentalsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8692D618D6AEFE001D2B5A /* TopDvdRentalsController.m */; };
 		EBCF2F1A18D18638007FDF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCF2F1918D18638007FDF7F /* Foundation.framework */; };
 		EBCF2F1C18D18638007FDF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCF2F1B18D18638007FDF7F /* CoreGraphics.framework */; };
 		EBCF2F1E18D18638007FDF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCF2F1D18D18638007FDF7F /* UIKit.framework */; };
@@ -45,6 +47,10 @@
 		EB1DF6F518D51DDA0032F4FC /* MoviesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesCell.h; sourceTree = "<group>"; };
 		EB1DF6F618D51DDA0032F4FC /* MoviesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesCell.m; sourceTree = "<group>"; };
 		EB1DF6F718D51DDA0032F4FC /* MoviesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesCell.xib; sourceTree = "<group>"; };
+		EB8692D218D6AE74001D2B5A /* BoxOfficeMoviesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxOfficeMoviesController.h; sourceTree = "<group>"; };
+		EB8692D318D6AE74001D2B5A /* BoxOfficeMoviesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxOfficeMoviesController.m; sourceTree = "<group>"; };
+		EB8692D518D6AEFE001D2B5A /* TopDvdRentalsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopDvdRentalsController.h; sourceTree = "<group>"; };
+		EB8692D618D6AEFE001D2B5A /* TopDvdRentalsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopDvdRentalsController.m; sourceTree = "<group>"; };
 		EBCF2F1618D18638007FDF7F /* RottenTomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenTomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBCF2F1918D18638007FDF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EBCF2F1B18D18638007FDF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +130,10 @@
 				EBE101E018D539EC00CB7089 /* MoviesDetailViewController.h */,
 				EBE101E118D539EC00CB7089 /* MoviesDetailViewController.m */,
 				EBE101E218D539EC00CB7089 /* MoviesDetailViewController.xib */,
+				EB8692D218D6AE74001D2B5A /* BoxOfficeMoviesController.h */,
+				EB8692D318D6AE74001D2B5A /* BoxOfficeMoviesController.m */,
+				EB8692D518D6AEFE001D2B5A /* TopDvdRentalsController.h */,
+				EB8692D618D6AEFE001D2B5A /* TopDvdRentalsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -339,6 +349,8 @@
 			files = (
 				EBE101DF18D537F900CB7089 /* Movie.m in Sources */,
 				EBE101E318D539EC00CB7089 /* MoviesDetailViewController.m in Sources */,
+				EB8692D718D6AEFE001D2B5A /* TopDvdRentalsController.m in Sources */,
+				EB8692D418D6AE74001D2B5A /* BoxOfficeMoviesController.m in Sources */,
 				EBCF2F2618D18638007FDF7F /* main.m in Sources */,
 				EBCF2F4B18D1865F007FDF7F /* MoviesIndexViewController.m in Sources */,
 				EB1DF6F818D51DDA0032F4FC /* MoviesCell.m in Sources */,
