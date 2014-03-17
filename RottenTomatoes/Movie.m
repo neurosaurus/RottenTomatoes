@@ -31,7 +31,7 @@
         Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
         [movies addObject:movie];
     }
-    return [movies copy];
+    return movies;
 }
 
 @end
