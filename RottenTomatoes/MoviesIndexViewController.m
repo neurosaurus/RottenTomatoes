@@ -10,8 +10,8 @@
 #import "Movie.h"
 #import "MoviesIndexViewController.h"
 #import "MoviesDetailViewController.h"
-#import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
+#import "Reachability.h"
 
 @interface MoviesIndexViewController ()
 
@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray *moviesArray;
 @property (nonatomic, strong) NSMutableArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UILabel *networkError;
 
 @end
 
@@ -42,6 +43,8 @@
     
     self.navigationItem.title = @"Top Box Office Movies";
     
+    [self.networkError setHidden:YES];
+    
     //refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
@@ -50,12 +53,12 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-
+    
     NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=re53qkp6bw9zp86m6zn7763x&limit=50&country=us";
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         self.moviesArray = [json objectForKey:@"movies"];
         self.movies = [NSMutableArray arrayWithCapacity:self.moviesArray.count];

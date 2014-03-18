@@ -35,10 +35,15 @@
     self.titleLabel.text = self.movie.title;
     self.summaryLabel.text = self.movie.synopsis;
     
+    self.summaryLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.summaryLabel.numberOfLines = 0;
+    
     NSURL *imageURL = [NSURL URLWithString:self.movie.poster];
     [self.fullImage setImageWithURL:imageURL];
     
     self.castLabel.text = self.movie.cast;
+    self.castLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.castLabel.numberOfLines = 0;
 
 }
 
