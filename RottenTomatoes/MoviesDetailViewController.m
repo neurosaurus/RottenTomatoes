@@ -9,6 +9,7 @@
 #import "MoviesDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "Movie.h"
+#import "SVProgressHUD.h"
 
 @interface MoviesDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *fullImage;
@@ -45,6 +46,9 @@
     self.castLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.castLabel.numberOfLines = 0;
 
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [SVProgressHUD dismiss];
 }
 
 @end

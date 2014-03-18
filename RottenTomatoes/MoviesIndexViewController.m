@@ -10,8 +10,9 @@
 #import "Movie.h"
 #import "MoviesIndexViewController.h"
 #import "MoviesDetailViewController.h"
-#import "MBProgressHUD.h"
+#import "SVProgressHUD.h"
 #import "Reachability.h"
+#import "AFNetworking.h"
 
 @interface MoviesIndexViewController ()
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *networkError;
+@property BOOL checksReachable;
 
 @end
 
@@ -43,13 +45,35 @@
     
     self.navigationItem.title = @"Top Box Office Movies";
     
-    [self.networkError setHidden:YES];
-    
     //refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Release to Refresh"];
+    
+    [self.networkError setHidden:YES];
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+    }];
+
+    Reachability* reach = [Reachability reachabilityWithHostname:@"api.rottentomatoes.com"];
+    
+    reach.reachableBlock = ^(Reachability*reach)
+    {
+        self.checksReachable = YES;
+        [self.networkError setHidden:YES];
+    };
+    
+    reach.unreachableBlock = ^(Reachability*reach)
+    {
+        self.checksReachable = NO;
+        [self.networkError setHidden:NO];
+    };
+    
+    [reach startNotifier];
+
     [self.tableView addSubview:refreshControl];
+    self.refreshControl = refreshControl;
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -58,15 +82,21 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
-        self.moviesArray = [json objectForKey:@"movies"];
-        self.movies = [NSMutableArray arrayWithCapacity:self.moviesArray.count];
-        
-        for(NSDictionary *dictionary in self.moviesArray)
+        if (connectionError)
         {
-            Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
-            [self.movies addObject:movie];
+            [self.networkError setHidden:NO];
+        }else {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            self.moviesArray = [json objectForKey:@"movies"];
+            self.movies = [NSMutableArray arrayWithCapacity:self.moviesArray.count];
+            
+            for(NSDictionary *dictionary in self.moviesArray)
+            {
+                Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+                [self.movies addObject:movie];
+            }
         }
         [self.tableView reloadData];
     }];
@@ -80,7 +110,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120.0;
+    return 115.0;
 }
 
 - (void)didReceiveMemoryWarning

@@ -21,13 +21,15 @@ PODS:
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
   - Shimmer (1.0.1)
+  - SVProgressHUD (HEAD based on 1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0.0)
   - KXKiOS7ColorsAndGradients (~> 1.0.0)
   - MBProgressHUD (~> 0.8)
-  - Reachability (~> 3.0)
+  - Reachability
   - Shimmer (~> 1.0.1)
+  - SVProgressHUD (HEAD)
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
@@ -35,5 +37,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
 
 COCOAPODS: 0.29.0
