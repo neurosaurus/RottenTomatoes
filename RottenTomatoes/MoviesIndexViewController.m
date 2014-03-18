@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *moviesArray;
 @property (nonatomic, strong) NSMutableArray *movies;
-//@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -38,16 +38,20 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"MoviesCell" bundle:nil] forCellReuseIdentifier:@"MoviesCell"];
+    
+    self.navigationItem.title = @"Top Box Office Movies";
+    
     //refresh
-//    UIRefreshControl *refreshC = [[UIRefreshControl alloc] init];
-//    [refreshC addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-//    [self.tableView addSubview:refreshC];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Release to Refresh"];
+    [self.tableView addSubview:refreshControl];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"MoviesCell" bundle:nil] forCellReuseIdentifier:@"MoviesCell"];
-    
-    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
+
+    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=re53qkp6bw9zp86m6zn7763x&limit=50&country=us";
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -63,12 +67,18 @@
         }
         [self.tableView reloadData];
     }];
-    //TODO: load indicator
 }
-//- (void)grabContent:(UIRefreshControl *)refreshControl
-//{
-//    
-//}
+
+//implement refresh
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    [refreshControl endRefreshing];
+    [self viewDidLoad];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 120.0;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -96,9 +106,12 @@
 #pragma mark - Table view methods -- delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] initWithNibName:@"MoviesDetailViewController" bundle:nil];
+    MoviesCell *cell = (MoviesCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+
+    MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] init];
+    movieDetailViewController.movie = self.movies[indexPath.row];
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
 

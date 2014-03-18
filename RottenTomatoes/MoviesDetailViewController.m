@@ -8,12 +8,13 @@
 
 #import "MoviesDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "MBProgressHUD.h"
+#import "Movie.h"
 
 @interface MoviesDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *fullImage;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *castLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -23,21 +24,22 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-     
+        // Custom initialization
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    self.navigationItem.title = self.movie.title;
+    self.titleLabel.text = self.movie.title;
+    self.summaryLabel.text = self.movie.synopsis;
     
+    NSURL *imageURL = [NSURL URLWithString:self.movie.poster];
+    [self.fullImage setImageWithURL:imageURL];
+    
+    self.castLabel.text = self.movie.cast;
+
 }
 
 @end

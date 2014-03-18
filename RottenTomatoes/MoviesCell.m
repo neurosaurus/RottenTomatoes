@@ -25,10 +25,9 @@
 
 - (void)configureWithMovie:(Movie *)movie
 {
-    self.movieTitle.text = [NSString stringWithFormat:@"%@", movie.title];
-    self.synopsis.text = [NSString stringWithFormat:@"%@", movie.synopsis];
-    self.synopsis.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.synopsis.numberOfLines = 2;
+    _movie = movie;
+    self.movieTitle.text = movie.title;
+    self.synopsis.text = movie.synopsis;
     
     NSURL *imageURL = [NSURL URLWithString:movie.thumbnail];
     [self.thumbnail setImageWithURL:imageURL];
