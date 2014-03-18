@@ -145,6 +145,7 @@
     movieDetailViewController.movie = self.movies[indexPath.row];
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [SVProgressHUD show];
 
 }
 
