@@ -14,7 +14,8 @@
 @interface MoviesCell ()
 
 
-@property (weak, nonatomic) IBOutlet UIImageView *posterView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *movieTitle;
 @property (weak, nonatomic) IBOutlet UILabel *synopsis;
 
@@ -22,16 +23,15 @@
 
 @implementation MoviesCell
 
-- (void)awakeFromNib
+- (void)configureWithMovie:(Movie *)movie
 {
-    //Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    self.movieTitle.text = [NSString stringWithFormat:@"%@", movie.title];
+    self.synopsis.text = [NSString stringWithFormat:@"%@", movie.synopsis];
+    self.synopsis.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.synopsis.numberOfLines = 2;
+    
+    NSURL *imageURL = [NSURL URLWithString:movie.thumbnail];
+    [self.thumbnail setImageWithURL:imageURL];
 }
 
 @end

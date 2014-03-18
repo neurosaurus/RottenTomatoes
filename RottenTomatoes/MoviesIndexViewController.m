@@ -52,6 +52,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
         self.moviesArray = [json objectForKey:@"movies"];
         self.movies = [NSMutableArray arrayWithCapacity:self.moviesArray.count];
         
@@ -79,6 +80,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     return self.movies.count;
 }
 
@@ -86,6 +88,7 @@
     
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell"];
     Movie *movie = self.movies[indexPath.row];
+    [cell configureWithMovie:movie];
     
     return cell;
 }
@@ -93,7 +96,7 @@
 #pragma mark - Table view methods -- delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] initWithNibName:@"MovieDetailViewController" bundle:nil];
+    MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] initWithNibName:@"MoviesDetailViewController" bundle:nil];
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 

@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) Movie *movie;
 
+- (void)configureWithMovie:(Movie *)movie;
+
 @end
