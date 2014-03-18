@@ -33,11 +33,9 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="movieDescription" destination="HjZ-ac-TJO" id="lBe-GU-OcP"/>
                 <outlet property="movieTitle" destination="jqJ-0S-pPr" id="nRx-b8-jb0"/>
                 <outlet property="posterView" destination="1eS-28-u04" id="t3t-0C-RUB"/>
                 <outlet property="synopsis" destination="HjZ-ac-TJO" id="lNP-BT-T14"/>
-                <outlet property="thumbNail" destination="1eS-28-u04" id="ofP-Qr-Z0j"/>
             </connections>
         </tableViewCell>
         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YRg-5x-meo">

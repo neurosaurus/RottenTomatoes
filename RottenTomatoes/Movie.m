@@ -16,22 +16,19 @@
     if (self) {
         self.title = [dictionary objectForKey:@"title"];
         self.synopsis = [dictionary objectForKey:@"synopsis"];
-        self.thumbNail = [dictionary objectForKey:@"thumbnail"];
-        self.posterUrl = [dictionary objectForKey:@"posters"];
-        self.cast = [dictionary objectForKey:@"cast"];
+        
+        NSDictionary *posters = [dictionary objectForKey:@"posters"];
+        self.thumbnail = [posters objectForKey:@"thumbnail"];
+        self.poster = [posters objectForKey:@"original"];
+
+        NSArray *castArray = [dictionary objectForKey:@"abridged_cast"];
+        NSMutableArray *actors = [NSMutableArray arrayWithCapacity:castArray.count];
+        for (NSDictionary *actor in castArray) {
+            [actors addObject:[actor objectForKey:@"name"]];
+        }
+        self.cast = [actors componentsJoinedByString:@", "];
     }
     return self;
-}
-
-+ (NSArray *)moviesWithArray:(id)object
-{
-    NSMutableArray *movies = [[NSMutableArray alloc] init];
-    for(NSDictionary *dictionary in movies)
-    {
-        Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
-        [movies addObject:movie];
-    }
-    return movies;
 }
 
 @end

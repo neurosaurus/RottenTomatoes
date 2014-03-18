@@ -17,7 +17,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) NSArray *moviesArray;
+@property (nonatomic, strong) NSMutableArray *movies;
 //@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
@@ -50,14 +51,19 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        //id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.movies = [Movie moviesWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        self.moviesArray = [json objectForKey:@"movies"];
+        self.movies = [NSMutableArray arrayWithCapacity:self.moviesArray.count];
+        
+        for(NSDictionary *dictionary in self.moviesArray)
+        {
+            Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+            [self.movies addObject:movie];
+        }
         [self.tableView reloadData];
     }];
-    
     //TODO: load indicator
 }
-
 //- (void)grabContent:(UIRefreshControl *)refreshControl
 //{
 //    
@@ -76,10 +82,11 @@
     return self.movies.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell" forIndexPath:indexPath];
-    cell.movie = self.movies[indexPath.row];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell"];
+    Movie *movie = self.movies[indexPath.row];
+    
     return cell;
 }
 

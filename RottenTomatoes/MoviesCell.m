@@ -34,17 +34,4 @@
     // Configure the view for the selected state
 }
 
-#pragma mark - Public methods
-
-- (void)setMovie:(Movie *)movie
-{
-    _movie = movie;
-    
-    self.movieTitle.text = self.movie.title;
-    self.synopsis.text = self.movie.synopsis;
-    NSURL *url = [[NSURL alloc] initWithString:self.movie.posterUrl] ;
-    [self.posterView setImageWithURL:url];
-    
-}
-
 @end
