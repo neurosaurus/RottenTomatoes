@@ -21,16 +21,6 @@
     MoviesIndexViewController *mvc = [[MoviesIndexViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mvc];
     
-//    BoxOfficeMoviesController *boxOfficeController = [[BoxOfficeMoviesController alloc] init];
-//    UINavigationController *navB = [[UINavigationController alloc] initWithRootViewController:boxOfficeController];
-
-//    TopDvdRentalsController *topDvdController = [[TopDvdRentalsController alloc] init];
-//    UINavigationController *topD = [[UINavigationController alloc] initWithRootViewController:topDvdController];
-
-//    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-//    tabBarController.viewControllers = @[topDvdController, boxOfficeController];
-//    self.window.rootViewController = tabBarController;
-    
     self.window.rootViewController = nc;
     
     return YES;
