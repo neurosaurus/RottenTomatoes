@@ -55,15 +55,15 @@
         NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
     }];
 
-    Reachability* reach = [Reachability reachabilityWithHostname:@"api.rottentomatoes.com"];
+    Reachability *reach = [Reachability reachabilityWithHostname:@"api.rottentomatoes.com"];
     
-    reach.reachableBlock = ^(Reachability*reach)
+    reach.reachableBlock = ^(Reachability *reach)
     {
         self.checksReachable = YES;
         [self.networkError setHidden:YES];
     };
     
-    reach.unreachableBlock = ^(Reachability*reach)
+    reach.unreachableBlock = ^(Reachability *reach)
     {
         self.checksReachable = NO;
         [self.networkError setHidden:NO];
@@ -76,6 +76,12 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+}
+
+#pragma mark - API calls
+- (void)getMovies
+{
+    NSLog(@"Retrieving movies from Rotten Tomatoes...");
     
     NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=re53qkp6bw9zp86m6zn7763x&limit=50&country=us";
     
@@ -85,7 +91,7 @@
         if (connectionError)
         {
             [self.networkError setHidden:NO];
-        }else {
+        } else {
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
             self.moviesArray = [json objectForKey:@"movies"];
@@ -102,7 +108,8 @@
 }
 
 //Refresh
-- (void)refresh:(UIRefreshControl *)refreshControl {
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
     [refreshControl endRefreshing];
     [self viewDidLoad];
 }
