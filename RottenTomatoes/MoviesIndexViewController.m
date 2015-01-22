@@ -16,7 +16,6 @@
 
 @interface MoviesIndexViewController ()
 
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *moviesArray;
 @property (nonatomic, strong) NSMutableArray *movies;
@@ -102,7 +101,7 @@
     }];
 }
 
-//implement refresh
+//Refresh
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [refreshControl endRefreshing];
     [self viewDidLoad];
@@ -123,11 +122,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return self.movies.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell"];
     Movie *movie = self.movies[indexPath.row];

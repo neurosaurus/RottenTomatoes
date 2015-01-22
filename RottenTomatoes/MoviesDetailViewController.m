@@ -47,7 +47,8 @@
     self.castLabel.numberOfLines = 0;
 
 }
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [SVProgressHUD dismiss];
 }
 

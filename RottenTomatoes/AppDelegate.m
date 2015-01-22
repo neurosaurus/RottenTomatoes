@@ -24,7 +24,6 @@
     self.window.rootViewController = nc;
     
     return YES;
-
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
