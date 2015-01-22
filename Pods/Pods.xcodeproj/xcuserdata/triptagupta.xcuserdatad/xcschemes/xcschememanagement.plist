@@ -14,12 +14,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Reachability.xcscheme</key>
+		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-SVProgressHUD.xcscheme</key>
+		<key>Pods-Reachability.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0AAC705165B149B2936BB009</key>
+		<key>05ABBCDAD27197101776AA81</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73DBA496F0F34438B23660FC</key>
+		<key>2EA67BC3A29F37334E116F73</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8AA9774C53CB46C1A3CE67B7</key>
+		<key>82345D130009149F33EB85FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>903E16B2FC0C4F6882A14133</key>
+		<key>96484B609EFFD8FA23219B67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E5B031821E384D17B9B15322</key>
+		<key>C4EF0FAF6C77CBA5053119B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F332A416533F4A80B936D944</key>
+		<key>F291B28641E2658CEFC7D321</key>
 		<dict>
 			<key>primary</key>
 			<true/>

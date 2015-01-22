@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *networkError;
-@property BOOL checksReachable;
+@property BOOL checkAPIReachable;
 
 @end
 
@@ -59,20 +59,19 @@
     
     reach.reachableBlock = ^(Reachability *reach)
     {
-        self.checksReachable = YES;
+        self.checkAPIReachable = YES;
         [self.networkError setHidden:YES];
+        NSLog(@"API is up!");
     };
     
     reach.unreachableBlock = ^(Reachability *reach)
     {
-        self.checksReachable = NO;
+        self.checkAPIReachable = NO;
         [self.networkError setHidden:NO];
+        NSLog(@"API is down!");
     };
     
     [reach startNotifier];
-
-    [self.tableView addSubview:refreshControl];
-    self.refreshControl = refreshControl;
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -107,25 +106,25 @@
     }];
 }
 
-//Refresh
+#pragma mark - Animation
+
 - (void)refresh:(UIRefreshControl *)refreshControl
 {
     [refreshControl endRefreshing];
-    [self viewDidLoad];
+    [self getMovies];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)showSpinner
 {
-    return 115.0;
+    
 }
 
-- (void)didReceiveMemoryWarning
+- (void)delayForSeconds
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    sleep(2);
 }
 
-#pragma mark - Table view methods -- datasource
+#pragma mark - Table view methods -- Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -141,7 +140,8 @@
     return cell;
 }
 
-#pragma mark - Table view methods -- delegate
+#pragma mark - Table view methods -- Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MoviesCell *cell = (MoviesCell *) [self.tableView cellForRowAtIndexPath:indexPath];
@@ -151,7 +151,17 @@
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     [SVProgressHUD show];
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 115.0;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
