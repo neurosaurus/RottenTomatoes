@@ -12,11 +12,11 @@
 #import "MoviesDetailViewController.h"
 #import "Reachability.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD.h"
 
 @interface MoviesIndexViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *moviesArray;
 @property (nonatomic, strong) NSMutableArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *networkError;
@@ -78,6 +78,8 @@
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    [self showSpinner];
 }
 
 #pragma mark - API calls
@@ -91,22 +93,12 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
-        if (connectionError)
-        {
-            [self.networkError setHidden:NO];
-        } else {
+        if (data) {
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
-            self.moviesArray = [json objectForKey:@"movies"];
-            self.movies = [NSMutableArray arrayWithCapacity:self.moviesArray.count];
-            
-            for(NSDictionary *dictionary in self.moviesArray)
-            {
-                Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
-                [self.movies addObject:movie];
-            }
+            NSLog(@"API call complete");
+            self.movies = [Movie moviesWithArray:json[@"movies"]];
+            [self.tableView reloadData];
         }
-        [self.tableView reloadData];
     }];
 }
 
@@ -120,7 +112,16 @@
 
 - (void)showSpinner
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        [self delayForSeconds];
+        [self getMovies];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
 }
 
 - (void)delayForSeconds
@@ -138,8 +139,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoviesCell"];
-    Movie *movie = self.movies[indexPath.row];
-    [cell configureWithMovie:movie];
+    cell.movie = self.movies[indexPath.row];
     
     return cell;
 }
@@ -148,12 +148,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Cell %ld",(long)indexPath.row);
+    
     MoviesCell *cell = (MoviesCell *) [self.tableView cellForRowAtIndexPath:indexPath];
 
-    MoviesDetailViewController *movieDetailViewController = [[MoviesDetailViewController alloc] init];
-    movieDetailViewController.movie = self.movies[indexPath.row];
-    [self.navigationController pushViewController:movieDetailViewController animated:YES];
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"Choosing... %@",cell.description);
+    
+    MoviesDetailViewController *mDVC = [[MoviesDetailViewController alloc] init];
+    mDVC.movie = self.movies[indexPath.row];
+    [self.navigationController pushViewController:mDVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

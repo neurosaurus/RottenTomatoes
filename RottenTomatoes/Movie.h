@@ -18,4 +18,6 @@
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 
++ (NSArray *)moviesWithArray:(NSArray *)array;
+
 @end
