@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MoviesIndexViewController.h"
-#import "SVProgressHUD.h"
 
 @interface MoviesIndexViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

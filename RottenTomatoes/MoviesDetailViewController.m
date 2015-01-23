@@ -9,7 +9,6 @@
 #import "MoviesDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "Movie.h"
-#import "SVProgressHUD.h"
 
 @interface MoviesDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *fullImage;
@@ -49,7 +48,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
-    [SVProgressHUD dismiss];
+
 }
 
 @end

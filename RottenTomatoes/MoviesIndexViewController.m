@@ -10,7 +10,6 @@
 #import "Movie.h"
 #import "MoviesIndexViewController.h"
 #import "MoviesDetailViewController.h"
-#import "SVProgressHUD.h"
 #import "Reachability.h"
 #import "AFNetworking.h"
 
@@ -31,7 +30,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Movies";
+        
     }
     return self;
 }
@@ -40,17 +39,19 @@
 {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"MoviesCell" bundle:nil] forCellReuseIdentifier:@"MoviesCell"];
+    UINib *movieCellNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
+    [self.tableView registerNib:movieCellNib forCellReuseIdentifier:@"MovieTableCell"];
     
     self.navigationItem.title = @"Top Box Office Movies";
     
-    //refresh
+    //Pulldown refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Release to Refresh"];
+    [self.tableView addSubview:refreshControl];
     
     [self.networkError setHidden:YES];
     
+    NSLog(@"Test Reachability");
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
     }];
@@ -72,12 +73,15 @@
     };
     
     [reach startNotifier];
-    
+
+    self.navigationItem.title = @"Top Box Office Movies";
+
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
 
 #pragma mark - API calls
+
 - (void)getMovies
 {
     NSLog(@"Retrieving movies from Rotten Tomatoes...");
@@ -150,7 +154,6 @@
     movieDetailViewController.movie = self.movies[indexPath.row];
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [SVProgressHUD show];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
