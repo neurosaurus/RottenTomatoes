@@ -20,14 +20,22 @@
 
 @implementation MoviesCell
 
-- (void)configureWithMovie:(Movie *)movie
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
+    [super setSelected:selected animated:animated];
+}
+
+# pragma mark - Public Methods
+
+- (void)setMovie:(Movie *)movie{
     _movie = movie;
+    
     self.movieTitle.text = movie.title;
     self.synopsis.text = movie.synopsis;
     
-    NSURL *imageURL = [NSURL URLWithString:movie.thumbnail];
-    [self.thumbnail setImageWithURL:imageURL];
+    NSLog(@"%@", movie.thumbnail);
+    
+    [self.thumbnail setImageWithURL:[NSURL URLWithString:movie.thumbnail]];
 }
 
 @end

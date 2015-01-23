@@ -14,24 +14,23 @@
 {
     self = [super init];
     if (self) {
-        self.title = [dictionary objectForKey:@"title"];
-        self.synopsis = [dictionary objectForKey:@"synopsis"];
-        
-        NSDictionary *posters = [dictionary objectForKey:@"posters"];
-        self.thumbnail = [posters objectForKey:@"thumbnail"];
-        self.poster = [posters objectForKey:@"original"];
+        self.title = dictionary[@"title"];
+        self.synopsis = dictionary[@"synopsis"];
+        self.thumbnail = dictionary[@"posters"][@"original"];
 
-        NSArray *castArray = [dictionary objectForKey:@"abridged_cast"];
-        NSMutableArray *actors = [NSMutableArray arrayWithCapacity:castArray.count];
-        for (NSDictionary *actor in castArray) {
-            [actors addObject:[actor objectForKey:@"name"]];
+        NSDictionary *cast = dictionary[@"abridged_cast"];
+        NSMutableString *castNames = [NSMutableString string];
+        
+        for (NSDictionary* actor in cast) {
+            [castNames appendFormat:@"%@, ",actor[@"name"]];
         }
-        self.cast = [actors componentsJoinedByString:@", "];
+        self.cast = castNames;
     }
     return self;
 }
 
-+ (NSArray *)moviesWithArray:(NSArray *)array {
++ (NSArray *)moviesWithArray:(NSArray *)array
+{
     NSLog(@"Starting moviesWithArray");
     NSMutableArray *movies = [[NSMutableArray alloc] init];
     
@@ -41,8 +40,7 @@
         [movies addObject:movie];
     }
     NSLog(@"Finishing moviesWithArray");
-    return movies
-    ;
+    return movies;
 }
 
 @end
